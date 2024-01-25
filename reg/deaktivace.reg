@@ -1,0 +1,68 @@
+Windows Registry Editor Version 5.00
+
+
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\AIM Standard Procedure]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\AIM Standard Procedure]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\AIM Standard Procedure]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\AIM Standard Procedure]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\AIM Standard Procedure]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\AIM Standard Procedure]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\AIM Standard Procedure]
+@=-
+
+
+
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\AIM Sharpen Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\AIM Sharpen Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\AIM Sharpen Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\AIM Sharpen Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\AIM Sharpen Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\AIM Sharpen Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\AIM Sharpen Image]
+@=-
+
+
+
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\AIM Blur Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\AIM Blur Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\AIM Blur Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\AIM Blur Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\AIM Blur Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\AIM Blur Image]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\AIM Blur Image]
+@=-
+
+
+
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\AIM Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\AIM Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\AIM Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\AIM Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\AIM Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\AIM Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\AIM Correct Red Eyes]
+@=-
