@@ -1,8 +1,5 @@
 # Script for standard procedures of editing image with AIM
 
-# Start a splash screen
-#& 'C:\AIM\splash\aim-splash.exe'
-
 # This script is called with path to an input image
 param (
     [string]$image_path
@@ -75,6 +72,9 @@ $output_path = [System.IO.Path]::Combine($directory, $filename + "_cropped" + $e
 # Add new dimensions to photoidmagick command
 $command = "photoidmagick.exe -f `"$img_edit_path`" -s ${new_width}x${new_height} --allow-oblique-face --allow-unevenly-open-eye --allow-open-mouth --allow-abnormally-open-eyelid --allow-unevenly-open-eye"
 
+# Echoing a message for the user.
+echo "Cropping the image."
+
 # Execute the photoidmagick command with Invoke-Expression
 Invoke-Expression $command
 
@@ -108,6 +108,9 @@ $output_path = [System.IO.Path]::Combine($directory, $filename + "_adjusted" + $
 # Define a command for adjusting color and brightness
 $command = "pythonw `"C:\AIM\standard_procedure\color_and_brightnes_adjust.py`" `"$img_edit_path`" `"$output_path`""
 
+# Echoing a message for the user.
+echo "Adjusting a color and a brightness of the image."
+
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
 
@@ -126,6 +129,9 @@ $output_path = [System.IO.Path]::Combine($directory, $filename + "_transparent" 
 
 # Define a command for the background removal
 $command = "backgroundremover.exe -i `"$img_edit_path`" -m `u2net_human_seg` -o `"$output_path`""
+
+# Echoing a message for the user.
+echo "Remove a background of the image."
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
@@ -148,6 +154,9 @@ $command = "pythonw `"C:\AIM\standard_procedure\add_background.py`" `"$img_edit_
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
 
+# Echoing a message for the user.
+echo "Adding a new background to the image."
+
 #____________________________
 # Final conversion and export
 
@@ -162,8 +171,11 @@ $final_path = [System.IO.Path]::Combine($parent_directory, $filename + "_backgro
 # Define a command for conversion to jpg
 $command = "pythonw `"C:\AIM\standard_procedure\file_conversion.py`" `"$output_path`" `"$final_path`""
 
+# Echoing a message for the user.
+echo "Here you go! The process is now complete."
+
 # Relax for three secs
-Start-Sleep -Seconds 3
+Start-Sleep -Seconds 5
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
