@@ -1,4 +1,16 @@
-# Script for standard procedures of editing image with AIM
+# Script for standard procedures of editing image with Aidm
+
+Write-Host @"
+          _     _           
+    /\   (_)   | |          
+   /  \   _  __| |_ __ ___  
+  / /\ \ | |/ _` | '_ ` _ \ 
+ / ____ \| | (_| | | | | | |
+/_/    \_\_|\__,_|_| |_| |_|
+                            
+ An AI ID Manipulation tool
+       by Luk Cogito 
+"@
 
 # This script is called with path to an input image
 param (
@@ -106,7 +118,7 @@ $extension = [System.IO.Path]::GetExtension($img_edit_path)
 $output_path = [System.IO.Path]::Combine($directory, $filename + "_adjusted" + $extension)
 
 # Define a command for adjusting color and brightness
-$command = "pythonw `"C:\AIM\standard_procedure\color_and_brightnes_adjust.py`" `"$img_edit_path`" `"$output_path`""
+$command = "pythonw `"C:\Aidm\standard_procedure\color_and_brightnes_adjust.py`" `"$img_edit_path`" `"$output_path`""
 
 # Echoing a message for the user.
 echo "Adjusting a color and a brightness of the image."
@@ -149,7 +161,7 @@ $filename = [System.IO.Path]::GetFileNameWithoutExtension($img_edit_path)
 $output_path = [System.IO.Path]::Combine($directory, $filename + "_background" + $extension)
 
 # Define a command for adding a new background
-$command = "pythonw `"C:\AIM\standard_procedure\add_background.py`" `"$img_edit_path`" `"$output_path`""
+$command = "pythonw `"C:\Aidm\standard_procedure\add_background.py`" `"$img_edit_path`" `"$output_path`""
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
@@ -169,7 +181,7 @@ $final_path = [System.IO.Path]::Combine($parent_directory, $filename + "_backgro
 
 
 # Define a command for conversion to jpg
-$command = "pythonw `"C:\AIM\standard_procedure\file_conversion.py`" `"$output_path`" `"$final_path`""
+$command = "pythonw `"C:\Aidm\standard_procedure\file_conversion.py`" `"$output_path`" `"$final_path`""
 
 # Echoing a message for the user.
 echo "Here you go! The process is now complete."
