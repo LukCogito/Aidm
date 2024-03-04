@@ -2,8 +2,6 @@ import cv2
 import os
 import sys
 
-# Nefunguje!
-
 # Get an input path from a command line argument
 input_path = sys.argv[1]
 

@@ -1,4 +1,4 @@
-# Script for standard procedures of editing image with Aidm
+ # Script for standard procedures of editing image with Aidm
 
 Write-Host @"
           _     _           
@@ -13,32 +13,32 @@ Write-Host @"
 "@
 
 # This script is called with path to an input image
-param (
-    [string]$image_path
-)
-
-# Get the directory where the file is located
-$directory = [System.IO.Path]::GetDirectoryName($image_path)
-
-# Extract the file name without extension
-$file_name = [System.IO.Path]::GetFileNameWithoutExtension($image_path)
-
-# Replace possible " " in file name with "_"
-$file_name = $file_name -replace ' ', '_'
-
-# Define a directory with the same name (possibly edited) as the file
-$working_directory = Join-Path -Path $directory -ChildPath $file_name
-
-# Create the directory
-New-Item -Path $working_directory -ItemType Directory
-
+param ( 
+    [string]$image_path 
+) 
+ 
+# Get the directory where the file is located 
+$directory = [System.IO.Path]::GetDirectoryName($image_path) 
+ 
+# Extract the file name without extension 
+$file_name = [System.IO.Path]::GetFileNameWithoutExtension($image_path) 
+ 
+# Replace possible " " in file name with "_" 
+$file_name = $file_name -replace ' ', '_' 
+ 
+# Define a directory with the same name (possibly edited) as the file 
+$working_directory = Join-Path -Path $directory -ChildPath $file_name 
+ 
+# Create the directory 
+New-Item -Path $working_directory -ItemType Directory 
+ 
 # Copy the file to the new directory in PNG format
-Copy-Item -Path $image_path -Destination (Join-Path -Path $working_directory -ChildPath "$file_name.png")
-
-# Get the path of the png image copy
-$img_edit_path = Join-Path -Path $working_directory -ChildPath "$file_name.png"
-
-#________________________________________________________________________
+Copy-Item -Path $image_path -Destination (Join-Path -Path $working_directory -ChildPath "$file_name.png") 
+ 
+# Get the path of the png image copy 
+$img_edit_path = Join-Path -Path $working_directory -ChildPath "$file_name.png" 
+ 
+#________________________________________________________________________ 
 # Here starts the part of this script for cropping and aligning the image
 
 # Add the system drawing module
