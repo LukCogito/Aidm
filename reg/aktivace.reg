@@ -1,93 +1,93 @@
 Windows Registry Editor Version 5.00
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\Aidm Standard Procedure\command]
-@="powershell.exe -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
+@="powershell.exe -WindowStyle Minimized -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\Aidm Standard Procedure\command]
-@="powershell.exe -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
+@="powershell.exe -WindowStyle Minimized -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\Aidm Standard Procedure\command]
-@="powershell.exe -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
+@="powershell.exe -WindowStyle Minimized -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\Aidm Standard Procedure\command]
-@="powershell.exe -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
+@="powershell.exe -WindowStyle Minimized -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\Aidm Standard Procedure\command]
-@="powershell.exe -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
+@="powershell.exe -WindowStyle Minimized -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\Aidm Standard Procedure\command]
-@="powershell.exe -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
+@="powershell.exe -WindowStyle Minimized -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\Aidm Standard Procedure\command]
-@="powershell.exe -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
+@="powershell.exe -WindowStyle Minimized -Command Start-Process -NoNewWindow -FilePath powershell -ArgumentList '-File \"C:\\Aidm\\Aidm.ps1\" \"\\\"%1\\\"\"'"
 
 
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\Aidm Sharpen Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\Aidm Sharpen Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\Aidm Sharpen Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\Aidm Sharpen Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\Aidm Sharpen Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\Aidm Sharpen Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\Aidm Sharpen Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\sharpen.py\" \"\\\"%1\\\"\""
 
 
 
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\Aidm Blur Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\Aidm Blur Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\Aidm Blur Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\Aidm Blur Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\Aidm Blur Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\Aidm Blur Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\Aidm Blur Image\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\blur.py\" \"\\\"%1\\\"\""
 
 
 
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\Aidm Correct Red Eyes\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\Aidm Correct Red Eyes\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\Aidm Correct Red Eyes\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\Aidm Correct Red Eyes\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\Aidm Correct Red Eyes\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\Aidm Correct Red Eyes\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
 
 [HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\Aidm Correct Red Eyes\command]
-@="powershell.exe -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""
+@="powershell.exe -WindowStyle Minimized -Command pythonw \"C:\\Aidm\\additional_procedure\\red_eye_correction.py\" \"\\\"%1\\\"\""

@@ -1,68 +1,68 @@
 Windows Registry Editor Version 5.00
 
 
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\AIM Standard Procedure]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\Aidm Standard Procedure]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\AIM Standard Procedure]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\Aidm Standard Procedure]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\AIM Standard Procedure]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\Aidm Standard Procedure]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\AIM Standard Procedure]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\Aidm Standard Procedure]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\AIM Standard Procedure]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\Aidm Standard Procedure]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\AIM Standard Procedure]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\Aidm Standard Procedure]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\AIM Standard Procedure]
-@=-
-
-
-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\AIM Sharpen Image]
-@=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\AIM Sharpen Image]
-@=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\AIM Sharpen Image]
-@=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\AIM Sharpen Image]
-@=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\AIM Sharpen Image]
-@=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\AIM Sharpen Image]
-@=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\AIM Sharpen Image]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\Aidm Standard Procedure]
 @=-
 
 
 
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\AIM Blur Image]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\Aidm Sharpen Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\AIM Blur Image]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\Aidm Sharpen Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\AIM Blur Image]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\Aidm Sharpen Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\AIM Blur Image]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\Aidm Sharpen Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\AIM Blur Image]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\Aidm Sharpen Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\AIM Blur Image]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\Aidm Sharpen Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\AIM Blur Image]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\Aidm Sharpen Image]
 @=-
 
 
 
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\AIM Correct Red Eyes]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\Aidm Blur Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\AIM Correct Red Eyes]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\Aidm Blur Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\AIM Correct Red Eyes]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\Aidm Blur Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\AIM Correct Red Eyes]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\Aidm Blur Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\AIM Correct Red Eyes]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\Aidm Blur Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\AIM Correct Red Eyes]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\Aidm Blur Image]
 @=-
-[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\AIM Correct Red Eyes]
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\Aidm Blur Image]
+@=-
+
+
+
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpg\shell\Aidm Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.jpeg\shell\Aidm Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.png\shell\Aidm Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.gif\shell\Aidm Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.bmp\shell\Aidm Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tiff\shell\Aidm Correct Red Eyes]
+@=-
+[-HKEY_CURRENT_USER\Software\Classes\SystemFileAssociations\.tif\shell\Aidm Correct Red Eyes]
 @=-
