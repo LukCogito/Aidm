@@ -1,9 +1,29 @@
 # Installation script for dependencies of Aidm
 
+# First, let me define a function for testing if given link for download is active or not
+function test_url_active([string]$url) {
+    try {
+        $webRequest = New-Object System.Net.WebClient
+        $webRequest.OpenRead($url)
+        return $true
+    } catch {
+        return $false
+    } finally {
+        $webRequest.Dispose()
+    }
+}
+
 echo "Installing Python..."
 
 # Set an URL for downloading Python
 $python_url = "https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe"
+
+# Verify URL
+if(-not (test_url_active $python_url)){
+    echo "$python_url is unreachable"
+    exit 1
+}
+
 
 # Set a path for downloading Python
 $installer = "$env:TEMP\python-3.11.8-amd64.exe"
@@ -28,6 +48,13 @@ echo "Installing cmake..."
 
 # Set an URL for downloading cmake
 $cmake_url = "https://github.com/Kitware/CMake/releases/download/v3.29.0-rc3/cmake-3.29.0-rc3-windows-x86_64.msi"
+
+# Verify URL
+if(-not (test_url_active $cmake_url)){
+    echo "$cmake_url is unreachable"
+    exit 1
+}
+
 
 # Set a path for downloading cmake
 $installer = "$env:TEMP\cmake-3.29.0-rc3-windows-x86_64.msi"
@@ -54,6 +81,14 @@ $7Zip_path = "C:\Program Files\7-Zip\"
 if(-not (Test-Path -Path $7Zip_path)){
     # Define the download URL and installer location
     $7zip_url = "https://www.7-zip.org/a/7z2401-x64.msi"
+
+    # Verify URL
+    if(-not (test_url_active $7zip_url)){
+        echo "$7zip_url is unreachable"
+        exit 1
+    }
+
+    # Set a path for downloading 7zip
     $installer = "$env:TEMP\7z2401-x64.msi"
     
     # Download 7-Zip installer
@@ -97,7 +132,13 @@ echo "Installing ffmpeg..."
 
 # Install ffmpeg (free and open-source software project consisting of a suite of libraries and programs for handling video, audio, and other multimedia files and streams)
 # Set an URL for downloading ffmpeg
-$ffmpeg_url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z"
+$ffmpeg_url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z"# Verify URL
+
+# Verify URL
+if(-not (test_url_active $ffmpeg_url)){
+    echo "$ffmpeg_url is unreachable"
+    exit 1
+}
 
 # Set a path for downloading ffmpeg
 $zip_file = "$env:TEMP\ffmpeg-release-full.7z"
@@ -117,11 +158,14 @@ Remove-Item $zip_file
 
 echo "Installing VS Build Tools for C++ ..."
 
-# Install Visual Studio Build Tools for C++
-# Source: https://visualstudio.microsoft.com/cs/visual-cpp-build-tools/
-
 # Set an URL for downloading vs
 $vs_url = "https://aka.ms/vs/17/release/vs_BuildTools.exe"
+
+# Verify URL
+if(-not (test_url_active $7vs_url)){
+    echo "$7vs_url is unreachable"
+    exit 1
+}
 
 # Set a path for downloading vs
 $installer = "$env:TEMP\vs_BuildTools.exe"
@@ -153,4 +197,10 @@ pip install opencv-python
 # Install argparse
 pip install argparse
 
+echo "Activating reg files for Aidm context menu GUI..."
+
+regedit /c ".\reg\activation.reg"
+
 echo "We're done, enjoy."
+
+exit 0
