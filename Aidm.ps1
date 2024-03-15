@@ -12,6 +12,9 @@ Write-Host @"
        by Luk Cogito 
 "@
 
+# Start the splash screen
+$splash_screen = Start-Job -FilePath ".\splash\splash.ps1"
+
 # This script is called with path to an input image
 param ( 
     [string]$image_path 
@@ -193,5 +196,8 @@ Start-Sleep -Seconds 5
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
+
+# Stop the splash screen
+Stop-Job -Job $splash_screen
 
 exit 0
