@@ -179,9 +179,11 @@ $extension = ".jpg"
 $parent_directory = [System.IO.Directory]::GetParent($directory).FullName
 $final_path = [System.IO.Path]::Combine($parent_directory, $filename + "_background" + $extension)
 
+# Set an alias for ffmpeg
+Set-Alias ffmpeg "C:\Program Files\ffmpeg-6.1.1-full_build\bin\ffmpeg.exe"
 
 # Define a command for conversion to jpg
-$command = "pythonw `"C:\Aidm\standard_procedure\file_conversion.py`" `"$output_path`" `"$final_path`""
+$command = "ffmpeg -i `"$output_path`" `"$final_path`""
 
 # Echoing a message for the user.
 echo "Here you go! The process is now complete."
@@ -192,4 +194,4 @@ Start-Sleep -Seconds 5
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
 
-exit
+exit 0
