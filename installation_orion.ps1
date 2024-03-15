@@ -32,7 +32,7 @@ $installer = "$env:TEMP\python-3.11.8-amd64.exe"
 Invoke-WebRequest -Uri $python_url -OutFile $installer
 
 # Install Python silently
-$installer /quiet InstallAllUsers=1 PrependPath=1 Include_test=0
+Start-Process -FilePath $installer -ArgumentList "/quiet", "InstallAllUsers=1", "PrependPath=1", "Include_test=0" -Wait
 
 # Remove the installer
 Remove-Item $installer
@@ -162,8 +162,8 @@ echo "Installing VS Build Tools for C++ ..."
 $vs_url = "https://aka.ms/vs/17/release/vs_BuildTools.exe"
 
 # Verify URL
-if(-not (test_url_active $7vs_url)){
-    echo "$7vs_url is unreachable"
+if(-not (test_url_active $vs_url)){
+    echo "$vs_url is unreachable"
     exit 1
 }
 
@@ -174,7 +174,7 @@ $installer = "$env:TEMP\vs_BuildTools.exe"
 Invoke-WebRequest -Uri $vs_url -OutFile $installer
 
 # Install vs silently
-Start-Process $installer -ArgumentList '--quiet', '--wait', '--norestart', '--nocache', '--installPath C:\BuildTools', '--add Microsoft.VisualStudio.Workload.VCTools', '--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64', '--add Microsoft.VisualStudio.Component.VC.ATL', '--add Microsoft.VisualStudio.Component.VC.CLI.Support', '--add Microsoft.VisualStudio.Component.Windows10SDK.18362' -NoNewWindow -Wait
+Start-Process -FilePath $installer -ArgumentList '--quiet', '--wait', '--norestart', '--nocache', '--installPath C:\BuildTools', '--add Microsoft.VisualStudio.Workload.VCTools', '--add Microsoft.VisualStudio.Component.VC.Tools.x86.x64', '--add Microsoft.VisualStudio.Component.VC.ATL', '--add Microsoft.VisualStudio.Component.VC.CLI.Support', '--add Microsoft.VisualStudio.Component.Windows10SDK.18362' -NoNewWindow -Wait
 
 # Remove the installer
 Remove-Item $installer
