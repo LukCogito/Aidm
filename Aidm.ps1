@@ -12,8 +12,11 @@ Write-Host @"
        by Luk Cogito 
 "@
 
+# Define the path to the splash screen executable
+$splash_path = ".\splash\splash.exe"
+
 # Start the splash screen
-$splash_screen = Start-Job -FilePath ".\splash\splash.ps1"
+Start-Process -FilePath $splash_path -ArgumentList "/b"
 
 # This script is called with path to an input image
 param ( 
@@ -198,6 +201,6 @@ Start-Sleep -Seconds 5
 Invoke-Expression $command
 
 # Stop the splash screen
-Stop-Job -Job $splash_screen
+Stop-Process -Name "splash"
 
 exit 0
