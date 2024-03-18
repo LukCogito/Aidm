@@ -124,7 +124,7 @@ $extension = [System.IO.Path]::GetExtension($img_edit_path)
 $output_path = [System.IO.Path]::Combine($directory, $filename + "_adjusted" + $extension)
 
 # Define a command for adjusting color and brightness
-$command = "pythonw `"C:\Aidm\standard_procedure\color_and_brightnes_adjust.py`" `"$img_edit_path`" `"$output_path`""
+$command = "pythonw `".\standard_procedure\color_and_brightnes_adjust.py`" `"$img_edit_path`" `"$output_path`""
 
 # Echoing a message for the user.
 echo "Adjusting a color and a brightness of the image."
@@ -167,7 +167,7 @@ $filename = [System.IO.Path]::GetFileNameWithoutExtension($img_edit_path)
 $output_path = [System.IO.Path]::Combine($directory, $filename + "_background" + $extension)
 
 # Define a command for adding a new background
-$command = "pythonw `"C:\Aidm\standard_procedure\add_background.py`" `"$img_edit_path`" `"$output_path`""
+$command = "pythonw `".\standard_procedure\add_background.py`" `"$img_edit_path`" `"$output_path`""
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
@@ -195,7 +195,7 @@ $command = "ffmpeg -i `"$output_path`" `"$final_path`""
 echo "Here you go! The process is now complete."
 
 # Relax for three secs
-Start-Sleep -Seconds 5
+Start-Sleep -Seconds 3
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
