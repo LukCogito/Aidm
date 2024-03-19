@@ -127,35 +127,6 @@ $UserPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
 # Combine the Machine and User paths, and update the current session's Path environment variable
 $Env:Path = $MachinePath + ";" + $UserPath
 
-
-echo "Installing ffmpeg..."
-
-# Install ffmpeg (free and open-source software project consisting of a suite of libraries and programs for handling video, audio, and other multimedia files and streams)
-# Set an URL for downloading ffmpeg
-$ffmpeg_url = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z"# Verify URL
-
-# Verify URL
-if(-not (test_url_active $ffmpeg_url)){
-    echo "$ffmpeg_url is unreachable"
-    exit 1
-}
-
-# Set a path for downloading ffmpeg
-$zip_file = "$env:TEMP\ffmpeg-release-full.7z"
-
-# Set a path for extracting ffmpeg
-$ffmpeg_extraction_path = "C:\Program Files\ffmpeg-6.1.1-full_build"
-
-# Download ffmpeg zip file
-Invoke-WebRequest -Uri $ffmpeg_url -OutFile $zip_file
-
-# Extract ffmpeg silently
-7zip x $zip_file $ffmpeg_extraction_path
-
-# Remove the zip file
-Remove-Item $zip_file
-
-
 echo "Installing VS Build Tools for C++ ..."
 
 # Set an URL for downloading vs

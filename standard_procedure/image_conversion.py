@@ -1,0 +1,15 @@
+import ffmpeg
+import os
+
+# Get an input path from a command line argument
+input_path = sys.argv[1]
+
+# Get an output path from a command line argument
+output_path = sys.argv[2]
+
+# Do the conversion
+(
+	ffmpeg.input(input_path)
+	.output(output_path)
+	.run()
+)

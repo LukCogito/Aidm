@@ -19,30 +19,36 @@ $splash_path = ".\splash\splash.exe"
 Start-Process -FilePath $splash_path -ArgumentList "/b"
 
 # This script is called with path to an input image
-param ( 
-    [string]$image_path 
-) 
- 
+param (
+    [string]$image_path
+)
+
 # Get the directory where the file is located 
-$directory = [System.IO.Path]::GetDirectoryName($image_path) 
+$directory = [System.IO.Path]::GetDirectoryName($image_path)
+
+# Extract the file name without extension
+$file_name = [System.IO.Path]::GetFileNameWithoutExtension($image_path)
  
-# Extract the file name without extension 
-$file_name = [System.IO.Path]::GetFileNameWithoutExtension($image_path) 
- 
-# Replace possible " " in file name with "_" 
-$file_name = $file_name -replace ' ', '_' 
- 
-# Define a directory with the same name (possibly edited) as the file 
-$working_directory = Join-Path -Path $directory -ChildPath $file_name 
- 
-# Create the directory 
-New-Item -Path $working_directory -ItemType Directory 
- 
+# Replace possible " " in file name with "_"
+$file_name = $file_name -replace ' ', '_'
+
+# Define a directory with the same name (possibly edited) as the file
+$working_directory = Join-Path -Path $directory -ChildPath $file_name
+
+# Create the directory
+New-Item -Path $working_directory -ItemType Directory
+
 # Copy the file to the new directory in PNG format
 Copy-Item -Path $image_path -Destination (Join-Path -Path $working_directory -ChildPath "$file_name.png") 
  
-# Get the path of the png image copy 
+# Define a path for img edit
 $img_edit_path = Join-Path -Path $working_directory -ChildPath "$file_name.png" 
+
+# Define a command for image conversion and copy
+$command = "pythonw `".\standard_procedure\image_conversion.py`" `"$image_path`" `"$img_edit_path`""
+
+# Execute the command with invoke expression
+Invoke-Expression $command
  
 #________________________________________________________________________ 
 # Here starts the part of this script for cropping and aligning the image
@@ -102,8 +108,11 @@ $output_wrong_format = Get-ChildItem -Path $working_directory -Recurse | Sort-Ob
 # Store the full path of the file in a variable
 $output_wrong_format_path = $output_wrong_format.FullName
 
-# Copy the edited file in wrong format and convert it to png
-Copy-Item -Path $output_wrong_format_path -Destination $output_path
+# Define a command for image conversion and copy
+$command = "pythonw `".\standard_procedure\image_conversion.py`" `"$output_wrong_format_path`" `"$output_path`""
+
+# Execute the command with invoke expression
+Invoke-Expression $command
 
 # Remove the item in wrong format
 Remove-Item -Path $output_wrong_format_path
@@ -146,7 +155,7 @@ $filename = [System.IO.Path]::GetFileNameWithoutExtension($img_edit_path)
 $output_path = [System.IO.Path]::Combine($directory, $filename + "_transparent" + $extension)
 
 # Define a command for the background removal
-$command = "backgroundremover.exe -i `"$img_edit_path`" -m `u2net_human_seg` -o `"$output_path`""
+$command = "backgroundremover.exe -i `"$img_edit_path`" -m `"u2net_human_seg`" -o `"$output_path`""
 
 # Echoing a message for the user.
 echo "Remove a background of the image."
@@ -169,11 +178,11 @@ $output_path = [System.IO.Path]::Combine($directory, $filename + "_background" +
 # Define a command for adding a new background
 $command = "pythonw `".\standard_procedure\add_background.py`" `"$img_edit_path`" `"$output_path`""
 
-# Execute the command with Invoke-Expression
-Invoke-Expression $command
-
 # Echoing a message for the user.
 echo "Adding a new background to the image."
+
+# Execute the command with Invoke-Expression
+Invoke-Expression $command
 
 #____________________________
 # Final conversion and export
@@ -185,11 +194,8 @@ $extension = ".jpg"
 $parent_directory = [System.IO.Directory]::GetParent($directory).FullName
 $final_path = [System.IO.Path]::Combine($parent_directory, $filename + "_background" + $extension)
 
-# Set an alias for ffmpeg
-Set-Alias ffmpeg "C:\Program Files\ffmpeg-6.1.1-full_build\bin\ffmpeg.exe"
-
-# Define a command for conversion to jpg
-$command = "ffmpeg -i `"$output_path`" `"$final_path`""
+# Define a command for image conversion and copy
+$command = "pythonw `".\standard_procedure\image_conversion.py`" `"$output_path`" `"$final_path`""
 
 # Echoing a message for the user.
 echo "Here you go! The process is now complete."
