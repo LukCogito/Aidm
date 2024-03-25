@@ -1,5 +1,5 @@
 import ffmpeg
-import os
+import sys
 
 # Get an input path from a command line argument
 input_path = sys.argv[1]

@@ -19,7 +19,7 @@ $splash_path = ".\splash\splash.exe"
 Start-Process -FilePath $splash_path -ArgumentList "/b"
 
 # This script is called with path to an input image
-param (
+param(
     [string]$image_path
 )
 
@@ -37,9 +37,6 @@ $working_directory = Join-Path -Path $directory -ChildPath $file_name
 
 # Create the directory
 New-Item -Path $working_directory -ItemType Directory
-
-# Copy the file to the new directory in PNG format
-Copy-Item -Path $image_path -Destination (Join-Path -Path $working_directory -ChildPath "$file_name.png") 
  
 # Define a path for img edit
 $img_edit_path = Join-Path -Path $working_directory -ChildPath "$file_name.png" 
