@@ -41,7 +41,7 @@ New-Item -Path $working_directory -ItemType Directory
 $img_edit_path = Join-Path -Path $working_directory -ChildPath "$file_name.png" 
 
 # Define a command for image conversion and copy
-$command = "ffmpeg -i `"$image_path`" `"$img_edit_path`" -loglevel quiet"
+$command = "ffmpeg -i `"$image_path`" `"$img_edit_path`" -loglevel error"
 
 # Execute the command with invoke expression
 Invoke-Expression $command
@@ -105,7 +105,7 @@ $output_wrong_format = Get-ChildItem -Path $working_directory -Recurse | Sort-Ob
 $output_wrong_format_path = $output_wrong_format.FullName
 
 # Define a command for image conversion and copy
-$command = "ffmpeg -i `"$output_wrong_format_path`" `"$output_path`" -loglevel quiet"
+$command = "ffmpeg -i `"$output_wrong_format_path`" `"$output_path`" -loglevel error"
 
 # Execute the command with invoke expression
 Invoke-Expression $command
@@ -187,14 +187,14 @@ Invoke-Expression $command
 # Final conversion and export
 
 # Set extension to jpg (because desired output is)
-$extension = ".jpg"
+$extension = ".jpg" 
 
 # Define the final path (in parent directory of working directory)
 $parent_directory = [System.IO.Directory]::GetParent($directory).FullName
 $final_path = [System.IO.Path]::Combine($parent_directory, $filename + "_background" + $extension)
 
 # Define a command for image conversion and copy
-$command = "ffmpeg -i `"$output_path`" `"$final_path`" -loglevel quiet"
+$command = "ffmpeg -i `"$output_path`" `"$final_path`" -loglevel error"
 
 # Echoing a message for the user.
 echo "Here you go! The process is now complete."
