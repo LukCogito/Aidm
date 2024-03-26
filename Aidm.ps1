@@ -1,4 +1,8 @@
- # Script for standard procedures of editing image with Aidm
+# Script for standard procedures of editing image with Aidm
+# This script is called with path to an input image
+param(
+    [string]$image_path
+)
 
 Write-Host @"
           _     _           
@@ -17,11 +21,6 @@ $splash_path = ".\splash\splash.exe"
 
 # Start the splash screen
 Start-Process -FilePath $splash_path -ArgumentList "/b"
-
-# This script is called with path to an input image
-param(
-    [string]$image_path
-)
 
 # Get the directory where the file is located 
 $directory = [System.IO.Path]::GetDirectoryName($image_path)
