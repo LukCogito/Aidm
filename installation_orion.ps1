@@ -46,28 +46,7 @@ py -m pip install --upgrade pip
 
 echo "Installing cmake..."
 
-# Set an URL for downloading cmake
-$cmake_url = "https://github.com/Kitware/CMake/releases/download/v3.29.0-rc3/cmake-3.29.0-rc3-windows-x86_64.msi"
-
-# Verify URL
-if(-not (test_url_active $cmake_url)){
-    echo "$cmake_url is unreachable"
-    exit 1
-}
-
-
-# Set a path for downloading cmake
-$installer = "$env:TEMP\cmake-3.29.0-rc3-windows-x86_64.msi"
-
-# Download cmake installer
-Invoke-WebRequest -Uri $cmake_url -OutFile $installer
-
-# Install cmake silently
-Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $installer /qn /norestart" -Wait
-
-# Remove the installer
-Remove-Item $installer
-
+winget install --id=Kitware.CMake -e --disable-interactivity --scope=machine
 
 echo "Defining paths..."
 
@@ -79,26 +58,8 @@ $7Zip_path = "C:\Program Files\7-Zip\"
 
 # Verify if path to 7zip exists
 if(-not (Test-Path -Path $7Zip_path)){
-    # Define the download URL and installer location
-    $7zip_url = "https://www.7-zip.org/a/7z2401-x64.msi"
-
-    # Verify URL
-    if(-not (test_url_active $7zip_url)){
-        echo "$7zip_url is unreachable"
-        exit 1
-    }
-
-    # Set a path for downloading 7zip
-    $installer = "$env:TEMP\7z2401-x64.msi"
-    
-    # Download 7-Zip installer
-    Invoke-WebRequest -Uri $7zip_url -OutFile $installer
-    
-    # Install 7-Zip silently
-    Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $installer /qn" -Wait
-    
-    # Remove the installer
-    Remove-Item $installer
+    # If it doesn't, install 7zip.
+    winget install --id=7zip.7zip --scope=machine
 }
 
 
@@ -152,7 +113,7 @@ Remove-Item $installer
 
 echo "Installing ffmpeg..."
 
-winget install --id=Gyan.FFmpeg  -e --disable-interactivity
+winget install --id=Gyan.FFmpeg  -e --disable-interactivity --scope=machine
 
 echo "Installing essential Python packages via pip..."
 
