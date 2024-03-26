@@ -42,7 +42,7 @@ New-Item -Path $working_directory -ItemType Directory
 $img_edit_path = Join-Path -Path $working_directory -ChildPath "$file_name.png" 
 
 # Define a command for image conversion and copy
-$command = "pythonw `".\standard_procedure\image_conversion.py`" `"$image_path`" `"$img_edit_path`""
+$command = "ffmpeg -i `"$image_path`" `"$img_edit_path`" -loglevel quiet"
 
 # Execute the command with invoke expression
 Invoke-Expression $command
@@ -106,7 +106,7 @@ $output_wrong_format = Get-ChildItem -Path $working_directory -Recurse | Sort-Ob
 $output_wrong_format_path = $output_wrong_format.FullName
 
 # Define a command for image conversion and copy
-$command = "pythonw `".\standard_procedure\image_conversion.py`" `"$output_wrong_format_path`" `"$output_path`""
+$command = "ffmpeg -i `"$output_wrong_format_path`" `"$output_path`" -loglevel quiet"
 
 # Execute the command with invoke expression
 Invoke-Expression $command
@@ -192,7 +192,7 @@ $parent_directory = [System.IO.Directory]::GetParent($directory).FullName
 $final_path = [System.IO.Path]::Combine($parent_directory, $filename + "_background" + $extension)
 
 # Define a command for image conversion and copy
-$command = "pythonw `".\standard_procedure\image_conversion.py`" `"$output_path`" `"$final_path`""
+$command = "ffmpeg -i `"$output_path`" `"$final_path`" -loglevel quiet"
 
 # Echoing a message for the user.
 echo "Here you go! The process is now complete."

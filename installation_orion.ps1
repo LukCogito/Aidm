@@ -150,6 +150,9 @@ Start-Process -FilePath $installer -ArgumentList '--quiet', '--wait', '--noresta
 # Remove the installer
 Remove-Item $installer
 
+echo "Installing ffmpeg..."
+
+winget install --id=Gyan.FFmpeg  -e --disable-interactivity
 
 echo "Installing essential Python packages via pip..."
 
