@@ -110,6 +110,9 @@ $command = "ffmpeg -i `"$output_wrong_format_path`" `"$output_path`" -loglevel q
 # Execute the command with invoke expression
 Invoke-Expression $command
 
+# Relax boi
+Start-Sleep -Seconds 2
+
 # Remove the item in wrong format
 Remove-Item -Path $output_wrong_format_path
 
