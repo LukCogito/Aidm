@@ -17,7 +17,7 @@ Write-Host @"
 "@
 
 # Define the path to the splash screen executable
-$splash_path = ".\splash\splash.exe"
+$splash_path = Join-Path -Path $PSScriptRoot "\splash\splash.exe"
 
 # Start the splash screen
 Start-Process -FilePath $splash_path -ArgumentList "/b"
