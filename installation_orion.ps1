@@ -15,27 +15,8 @@ function test_url_active([string]$url) {
 
 echo "Installing Python..."
 
-# Set an URL for downloading Python
-$python_url = "https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe"
-
-# Verify URL
-if(-not (test_url_active $python_url)){
-    echo "$python_url is unreachable"
-    exit 1
-}
-
-
-# Set a path for downloading Python
-$installer = "$env:TEMP\python-3.11.8-amd64.exe"
-
-# Download Python installer
-Invoke-WebRequest -Uri $python_url -OutFile $installer
-
-# Install Python silently
-Start-Process -FilePath $installer -ArgumentList "/quiet", "InstallAllUsers=1", "PrependPath=1", "Include_test=0" -Wait
-
-# Remove the installer
-Remove-Item $installer
+# Install lastest avilable version of Python using winget
+winget install --id=Python.Python --exact --scope=machine
 
 
 echo "Installing pip..."
