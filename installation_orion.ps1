@@ -15,9 +15,8 @@ function test_url_active([string]$url) {
 
 echo "Installing Python..."
 
-# Install lastest avilable version of Python using winget
-winget install --id=Python.Python --exact --scope=machine
-
+# Install Python 3.12
+winget install --id=Python.Python.3.12 --disable-interactivity --schope=machine
 
 echo "Installing pip..."
 
@@ -96,22 +95,15 @@ echo "Installing ffmpeg..."
 
 winget install --id=Gyan.FFmpeg  -e --disable-interactivity --scope=machine
 
+# Rename current dir to "project"
+mv $PSScriptRoot "project"
+
+# Add virtual Python
+python -m venv ".\"
+
 echo "Installing essential Python packages via pip..."
 
-# Install PyTorch
-pip install torch torchvision torchaudio
-
-# Install backgroundremover
-pip install backgroundremover
-
-# Install photoidmagick
-pip install photoidmagick
-
-# Install cv2
-pip install opencv-python
-
-# Install argparse
-pip install argparse
+pip install -r Join-Path -Path $PSScriptRoot "\requirements.txt"
 
 echo "Activating reg files for Aidm context menu GUI..."
 

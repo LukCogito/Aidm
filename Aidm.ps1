@@ -131,8 +131,11 @@ $extension = [System.IO.Path]::GetExtension($img_edit_path)
 # Define an output path
 $output_path = [System.IO.Path]::Combine($directory, $filename + "_adjusted" + $extension)
 
+# Define a path to the script
+$script_path = Join-Path -Path $PSScriptRoot "\standard_procedure\color_and_brightnes_adjust.py"
+
 # Define a command for adjusting color and brightness
-$command = "pythonw `".\standard_procedure\color_and_brightnes_adjust.py`" `"$img_edit_path`" `"$output_path`""
+$command = "pythonw $script_path `"$img_edit_path`" `"$output_path`""
 
 # Echoing a message for the user.
 echo "Adjusting a color and a brightness of the image."
@@ -173,6 +176,9 @@ $filename = [System.IO.Path]::GetFileNameWithoutExtension($img_edit_path)
 
 # Define an output path
 $output_path = [System.IO.Path]::Combine($directory, $filename + "_background" + $extension)
+
+# Define a path to the script
+$script_path = Join-Path -Path $PSScriptRoot ".\standard_procedure\add_background.py"
 
 # Define a command for adding a new background
 $command = "pythonw `".\standard_procedure\add_background.py`" `"$img_edit_path`" `"$output_path`""

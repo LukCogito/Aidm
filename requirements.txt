@@ -1,0 +1,8 @@
+torch
+torchvision
+torchaudio
+backgroundremover
+photoidmagick
+opencv-python
+argparse
+numpy == 1.26.4
