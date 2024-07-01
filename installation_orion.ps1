@@ -33,27 +33,8 @@ echo "Defining paths..."
 # Get the current value of the PATH environment variable
 $Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
 
-# Define the path to the 7-Zip directory
-$7Zip_path = "C:\Program Files\7-Zip\"
-
-# Verify if path to 7zip exists
-if(-not (Test-Path -Path $7Zip_path)){
-    # If it doesn't, install 7zip.
-    winget install --id=7zip.7zip --scope=machine
-}
-
-
 # Define the path to the cmake directory
 $cmakePath = "C:\Program Files\CMake\bin\"
-
-# Check if the 7-Zip path is already in the PATH environment variable
-if (-not ($Path).Contains($7ZipPath)) {
-    # If not, add the 7-Zip path to the PATH environment variable
-    [System.Environment]::SetEnvironmentVariable("Path", $Path + ";" + $7ZipPath, "Machine")
-}
-
-# Set an alias for 7-Zip
-Set-Alias 7zip "C:\Program Files\7-Zip\7z.exe"
 
 # Check if the cmake path is already in the PATH environment variable
 if (-not ($Path).Contains($cmakePath)) {
@@ -95,15 +76,19 @@ echo "Installing ffmpeg..."
 
 winget install --id=Gyan.FFmpeg  -e --disable-interactivity --scope=machine
 
-# Rename current dir to "project"
-mv $PSScriptRoot "project"
-
 # Add virtual Python
-python -m venv ".\"
+$python_dir = "D:\Python\"
+mkdir $python_dir
+python -m venv $python_dir
+
+# Activate virtual Python
+$script_path = Join-Path -Path $python_dir "Scripts\activate.ps1"
+Start-Process -FilePath 
 
 echo "Installing essential Python packages via pip..."
 
-pip install -r Join-Path -Path $PSScriptRoot "\requirements.txt"
+$requirements_path = Join-Path -Path $PSScriptRoot "\requirements.txt"
+pip install -r $requirements_path
 
 echo "Activating reg files for Aidm context menu GUI..."
 

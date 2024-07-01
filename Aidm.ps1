@@ -16,6 +16,27 @@ Write-Host @"
        by Luk Cogito 
 "@
 
+# Define a function for 56:32 ratio calculation
+function calculate_ratio($width, $height) {
+    $ratio = 53/62
+    $width = [float]$width
+    $height = [float]$height
+    $q = [Math]::Max($width, $height)
+
+    if (($ratio * $q) -lt ([Math]::Min($width, $height))) {
+        $new_width = [Math]::Min($q, $ratio * $q)
+        $new_height = [Math]::Max($q, $ratio * $q)
+    }
+    
+    else {
+        $q = [Math]::Min($width, $height)
+        $new_width = [Math]::Min($q, $ratio * $q)
+        $new_height = [Math]::Max($q, $ratio * $q)
+    }
+
+    return [Math]::Round($new_width), [Math]::Round($new_height)
+}
+
 # Define the path to the splash screen executable
 $splash_path = Join-Path -Path $PSScriptRoot "\splash\splash.exe"
 
@@ -55,31 +76,8 @@ Add-Type -AssemblyName System.Drawing
 # Load the image for editing
 $image = [System.Drawing.Image]::FromFile($img_edit_path)
 
-# Get the width and height of the image
-$width = $image.Width
-$height = $image.Height
-
-# Calculate dimensions based on a ratio of 265:310
-$ratio = 265 / 310
-$min_diff = [double]::MaxValue
-$result = 0, 0
-
-for ($x = 1; $x -le $width; $x++) {
-    # Truncate the division result to get an integer value for y
-    $y = [Math]::Truncate($x / $ratio)
-    if ($y -gt $height) {
-        break
-    }
-    # Calculate the difference between (width - height) and (x - y)
-    $diff = [Math]::Abs(($width - $height) - ($x - $y))
-    if ($diff -lt $min_diff) {
-        # If this difference is smaller than min_diff, update min_diff and result
-        $min_diff = $diff
-        $result = $x, $y
-    }
-}
-
-$new_width, $new_height = $result
+# Use the function for calculating ratio with image width and height
+$new_width, $new_height = calculate_ratio $image.Width $image.Height
 
 # Extract the directory, filename, and extension
 $directory = [System.IO.Path]::GetDirectoryName($img_edit_path)
