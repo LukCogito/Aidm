@@ -83,7 +83,7 @@ python -m venv $python_dir
 
 # Activate virtual Python
 $script_path = Join-Path -Path $python_dir "Scripts\activate.ps1"
-Start-Process -FilePath 
+Invoke-Expression -Command $script_path
 
 echo "Installing essential Python packages via pip..."
 

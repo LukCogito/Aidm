@@ -37,6 +37,9 @@ function calculate_ratio($width, $height) {
     return [Math]::Round($new_width), [Math]::Round($new_height)
 }
 
+# Activate virtual Python
+Invoke-Expression -Command "D:\Python\Scripts\Activate.ps1"
+
 # Define the path to the splash screen executable
 $splash_path = Join-Path -Path $PSScriptRoot "\splash\splash.exe"
 
@@ -176,10 +179,10 @@ $filename = [System.IO.Path]::GetFileNameWithoutExtension($img_edit_path)
 $output_path = [System.IO.Path]::Combine($directory, $filename + "_background" + $extension)
 
 # Define a path to the script
-$script_path = Join-Path -Path $PSScriptRoot ".\standard_procedure\add_background.py"
+$script_path = Join-Path -Path $PSScriptRoot "\standard_procedure\add_background.py"
 
 # Define a command for adding a new background
-$command = "pythonw `".\standard_procedure\add_background.py`" `"$img_edit_path`" `"$output_path`""
+$command = "pythonw $script_path `"$img_edit_path`" `"$output_path`""
 
 # Echoing a message for the user.
 echo "Adding a new background to the image."
