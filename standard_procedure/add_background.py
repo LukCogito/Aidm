@@ -2,11 +2,11 @@ import sys
 from PIL import Image, ImageDraw
 
 # Get input and output paths from command line arguments
-inputPath = sys.argv[1]
-outputPath = sys.argv[2]
+input_path = sys.argv[1]
+output_path = sys.argv[2]
 
 # Open the input image with a transparent background
-img = Image.open(inputPath).convert('RGBA')
+img = Image.open(input_path).convert('RGBA')
 
 # Create a new RGBA image with a transparent background
 bg = Image.new('RGBA', img.size, (0, 0, 0, 0))
@@ -32,4 +32,4 @@ for y in range(bg.height):
 result = Image.alpha_composite(bg, img)
 
 # Save the edited image as a PNG file
-result.save(outputPath)
+result.save(output_path)

@@ -39,14 +39,18 @@ def automatic_brightness_and_contrast(image, clip_hist_percent=1):
     return (auto_result, alpha, beta)
 
 # Get the paths to the original and target image from the command line arguments
-inputPath = sys.argv[1]
-outputPath = sys.argv[2]
+input_path = sys.argv[1]
+output_path = sys.argv[2]
 
 # Load the image
-image = cv2.imread(inputPath)
+# https://stackoverflow.com/questions/43185605/how-do-i-read-an-image-from-a-path-with-unicode-characters
+stream = open(input_path, "rb")
+bytes = bytearray(stream.read())
+numpyarray = np.asarray(bytes, dtype=np.uint8)
+image = cv2.imdecode(numpyarray, cv2.IMREAD_UNCHANGED)
 
 # Automatic brightness and contrast adjustment
 auto_result, alpha, beta = automatic_brightness_and_contrast(image)
 
 # Save the resulting image
-cv2.imwrite(outputPath, auto_result)
+cv2.imwrite(output_path, auto_result)
