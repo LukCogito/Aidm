@@ -16,17 +16,17 @@ function test_url_active([string]$url) {
 echo "Installing Python..."
 
 # Install Python 3.12
-winget install --id=Python.Python.3.12 --disable-interactivity --schope=machine
+winget install --id=Python.Python.3.12 -e --disable-interactivity --scope=machine
 
 echo "Installing pip..."
 
 # Check if the version of pip is up to date and install lastest if not
-py -m pip install --upgrade pip
+python -m pip install --upgrade pip
 
 
 echo "Installing cmake..."
 
-winget install --id=Kitware.CMake -e --disable-interactivity --scope=machine
+winget install --id=Kitware.CMake --version=3.29.6 -e --disable-interactivity --scope=machine
 
 echo "Defining paths..."
 
@@ -74,7 +74,7 @@ Remove-Item $installer
 
 echo "Installing ffmpeg..."
 
-winget install --id=Gyan.FFmpeg  -e --disable-interactivity --scope=machine
+winget install --id=Gyan.FFmpeg --version=4.53  -e --disable-interactivity --scope=machine
 
 # Add virtual Python
 $python_dir = "D:\Python\"
