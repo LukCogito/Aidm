@@ -18,12 +18,6 @@ echo "Installing Python..."
 # Install Python 3.12
 winget install --id=Python.Python.3.12 -e --disable-interactivity --scope=machine
 
-echo "Installing pip..."
-
-# Check if the version of pip is up to date and install lastest if not
-python -m pip install --upgrade pip
-
-
 echo "Installing cmake..."
 
 winget install --id=Kitware.CMake --version=3.29.6 -e --disable-interactivity --scope=machine
@@ -80,6 +74,9 @@ winget install --id=Gyan.FFmpeg --version=4.53  -e --disable-interactivity --sco
 $python_dir = "D:\Python\"
 mkdir $python_dir
 python -m venv $python_dir
+
+# Check if the version of pip is up to date and install lastest if not
+python -m pip install --upgrade pip
 
 # Activate virtual Python
 $script_path = Join-Path -Path $python_dir "Scripts\activate.ps1"
