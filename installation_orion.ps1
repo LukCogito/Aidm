@@ -1,4 +1,11 @@
 # Installation script for dependencies of Aidm
+# An author:
+#  _          _       ____            _ _        
+# | |   _   _| | __  / ___|___   __ _(_) |_ ___  
+# | |  | | | | |/ / | |   / _ \ / _` | | __/ _ \ 
+# | |__| |_| |   <  | |__| (_) | (_| | | || (_) |
+# |_____\__,_|_|\_\  \____\___/ \__, |_|\__\___/ 
+#                               |___/
 
 # First, let me define a function for testing if given link for download is active or not
 function test_url_active([string]$url) {
@@ -20,7 +27,7 @@ winget install --id=Python.Python.3.12 -e --disable-interactivity --scope=machin
 
 echo "Installing cmake..."
 
-winget install --id=Kitware.CMake --version=3.29.6 -e --disable-interactivity --scope=machine
+winget install --id=Kitware.CMake -e --disable-interactivity --scope=machine
 
 echo "Defining paths..."
 
@@ -67,8 +74,7 @@ Start-Process -FilePath $installer -ArgumentList '--quiet', '--wait', '--noresta
 Remove-Item $installer
 
 echo "Installing ffmpeg..."
-
-winget install --id=Gyan.FFmpeg --version=4.53  -e --disable-interactivity --scope=machine
+winget install --id=Gyan.FFmpeg  -e --disable-interactivity --scope=machine
 
 # Add virtual Python
 $python_dir = "D:\Python\"

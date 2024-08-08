@@ -1,4 +1,12 @@
 # Script for standard procedures of editing image with Aidm
+# An author:
+#  _          _       ____            _ _        
+# | |   _   _| | __  / ___|___   __ _(_) |_ ___  
+# | |  | | | | |/ / | |   / _ \ / _` | | __/ _ \ 
+# | |__| |_| |   <  | |__| (_) | (_| | | || (_) |
+# |_____\__,_|_|\_\  \____\___/ \__, |_|\__\___/ 
+#                               |___/
+
 # This script is called with path to an input image
 param(
     [string]$image_path
