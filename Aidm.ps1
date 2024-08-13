@@ -169,7 +169,7 @@ $output_path = [System.IO.Path]::Combine($directory, $filename + "_transparent" 
 $command = "backgroundremover.exe -i `"$img_edit_path`" -m `"u2net_human_seg`" -o `"$output_path`""
 
 # Echoing a message for the user.
-echo "Remove a background of the image."
+echo "Removing a background of the image."
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command

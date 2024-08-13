@@ -1,74 +1,90 @@
-import sys
 import os
+import sys
 import cv2
+import shutil
+import tempfile
 import numpy as np
+from pathlib import Path
 
-# Get an input path from a command line argument
-input_path = sys.argv[1]
+with tempfile.TemporaryDirectory() as tmpdirname:
+    # Extract a file path without an extension
+    file_path_without_extension = os.path.splitext(sys.argv[1])[0]
 
-# Extract a file path without an extension
-file_path_without_extension = os.path.splitext(input_path)[0]
+    # Extract an extension
+    extension = os.path.splitext(sys.argv[1])[1]
 
-# Extract an extension
-extension = os.path.splitext(input_path)[1]
+    # Extract a file name without extension
+    filename = Path(sys.argv[1]).stem
 
-# Define an output path
-output_path = file_path_without_extension + "_eyes" + extension
+    # Define an input path
+    input_path = tmpdirname + "/" + filename + extension
 
-# Load the image
-img = cv2.imread(input_path)
+    # Define an output path
+    output_path = tmpdirname + "/" + filename + "_eyes" + extension
 
-out_image = img.copy()
+    # Define a final path
+    final_path = file_path_without_extension + "_eyes" + extension
 
-# Load the Haar cascade for eyes
-eyes_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
+    # Copy the input image to the temp dir
+    shutil.copyfile(sys.argv[1], input_path)
 
-# Detect eyes in the image
-eye_rects = eyes_cascade.detectMultiScale(img, 1.1, 5)
+    # Load the image
+    img = cv2.imread(input_path)
 
-# Iterate over all detected eyes to remove red-eye effect
-for x, y, w, h in eye_rects:
-    # Crop the region containing the eye
-    eye_image = img[y:y+h, x:x+w]
+    out_image = img.copy()
 
-    # Split the eye image into its Red, Green, and Blue channels
-    b, g, r = cv2.split(eye_image)
+    # Load the Haar cascade for eyes
+    eyes_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_eye.xml')
 
-    # Add the Blue and Green channels
-    bg = cv2.add(b, g)
+    # Detect eyes in the image
+    eye_rects = eyes_cascade.detectMultiScale(img, 1.1, 5)
 
-    # Create a mask based on the red color and the combination of blue and green colors
-    mask = ((r > (bg - 20)) & (r > 80)).astype(np.uint8) * 255
+    # Iterate over all detected eyes to remove red-eye effect
+    for x, y, w, h in eye_rects:
+        # Crop the region containing the eye
+        eye_image = img[y:y+h, x:x+w]
 
-    # Find the largest region in the mask
-    contours, _ = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-    max_area = 0
-    max_cont = None
-    for cont in contours:
-        area = cv2.contourArea(cont)
-        if area > max_area:
-            max_area = area
-            max_cont = cont
+        # Split the eye image into its Red, Green, and Blue channels
+        b, g, r = cv2.split(eye_image)
 
-    # Reset the mask image to complete black
-    mask = np.zeros_like(mask)
+        # Add the Blue and Green channels
+        bg = cv2.add(b, g)
 
-    # Draw the largest contour on the mask
-    cv2.drawContours(mask, [max_cont], 0, 255, -1)
+        # Create a mask based on the red color and the combination of blue and green colors
+        mask = ((r > (bg - 20)) & (r > 80)).astype(np.uint8) * 255
 
-    # Close small holes in the mask for a smoother region
-    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5)))
-    mask = cv2.dilate(mask, (3, 3), iterations=3)
+        # Find the largest region in the mask
+        contours, _ = cv2.findContours(mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+        max_area = 0
+        max_cont = None
+        for cont in contours:
+            area = cv2.contourArea(cont)
+            if area > max_area:
+                max_area = area
+                max_cont = cont
 
-    # Compensate for the lost red color information by filling with the mean of blue and green colors
-    mean = bg // 2
+        # Reset the mask image to complete black
+        mask = np.zeros_like(mask)
 
-    # Apply the mean value to the masked image
-    mean = cv2.bitwise_and(mean, mask)
-    mean = cv2.cvtColor(mean, cv2.COLOR_GRAY2BGR)
-    mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
-    eye = cv2.bitwise_and(cv2.bitwise_not(mask), eye_image) + mean
-    out_image[y:y+h, x:x+w] = eye
+        # Draw the largest contour on the mask
+        cv2.drawContours(mask, [max_cont], 0, 255, -1)
 
-# Save the result to the output file
-cv2.imwrite(output_path, out_image)
+        # Close small holes in the mask for a smoother region
+        mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5)))
+        mask = cv2.dilate(mask, (3, 3), iterations=3)
+
+        # Compensate for the lost red color information by filling with the mean of blue and green colors
+        mean = bg // 2
+
+        # Apply the mean value to the masked image
+        mean = cv2.bitwise_and(mean, mask)
+        mean = cv2.cvtColor(mean, cv2.COLOR_GRAY2BGR)
+        mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
+        eye = cv2.bitwise_and(cv2.bitwise_not(mask), eye_image) + mean
+        out_image[y:y+h, x:x+w] = eye
+
+    # Save the result to the output file
+    cv2.imwrite(output_path, out_image)
+
+    # Copy the output to the same dir as input
+    shutil.copyfile(output_path, final_path)
