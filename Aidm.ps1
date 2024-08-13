@@ -54,8 +54,8 @@ $splash_path = Join-Path -Path $PSScriptRoot "\splash\splash.exe"
 # Start the splash screen
 Start-Process -FilePath $splash_path -ArgumentList "/b"
 
-# Get the directory where the file is located 
-$directory = [System.IO.Path]::GetDirectoryName($image_path)
+# Get the original directory where the file is located 
+$original_directory = [System.IO.Path]::GetDirectoryName($image_path)
 
 # Extract the file name without extension
 $file_name = [System.IO.Path]::GetFileNameWithoutExtension($image_path)
@@ -64,7 +64,7 @@ $file_name = [System.IO.Path]::GetFileNameWithoutExtension($image_path)
 $file_name = $file_name -replace ' ', '_'
 
 # Define a directory with the same name (possibly edited) as the file
-$working_directory = Join-Path -Path $directory -ChildPath $file_name
+$working_directory = Join-Path -Path $env:temp -ChildPath $file_name
 
 # Create the directory
 New-Item -Path $working_directory -ItemType Directory
@@ -207,6 +207,9 @@ $extension = ".jpg"
 # Define the final path (in parent directory of working directory)
 $parent_directory = [System.IO.Directory]::GetParent($directory).FullName
 $final_path = [System.IO.Path]::Combine($parent_directory, $filename + "_background" + $extension)
+
+# Copy the working dir to the same dir as original image
+cp $working_directory $original_directory
 
 # Define a command for image conversion and copy
 $command = "ffmpeg -i `"$output_path`" `"$final_path`" -loglevel error"
