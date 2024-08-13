@@ -207,9 +207,6 @@ $extension = ".jpg"
 # Define the final path
 $final_path = [System.IO.Path]::Combine($original_directory, $filename + "_background" + $extension)
 
-# Copy the working dir to the same dir as original image
-Copy-Item -Path $working_directory -Destination $original_directory -Recurse
-
 # Define a command for image conversion and copy
 $command = "ffmpeg -i `"$output_path`" `"$final_path`" -loglevel error"
 
@@ -218,6 +215,13 @@ echo "Here you go! The process is now complete."
 
 # Relax for three secs
 Start-Sleep -Seconds 3
+
+# Copy the working dir to the same dir as original image
+Copy-Item -Path $working_directory -Destination $original_directory -Recurse
+
+# Delete working dir
+# https://stackoverflow.com/questions/10443891/powershell-command-rm-rf
+rm $working_directory -r -fo
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
