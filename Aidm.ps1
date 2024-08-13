@@ -204,12 +204,11 @@ Invoke-Expression $command
 # Set extension to jpg (because desired output is)
 $extension = ".jpg" 
 
-# Define the final path (in parent directory of working directory)
-$parent_directory = [System.IO.Directory]::GetParent($directory).FullName
-$final_path = [System.IO.Path]::Combine($parent_directory, $filename + "_background" + $extension)
+# Define the final path
+$final_path = [System.IO.Path]::Combine($original_directory, $filename + "_background" + $extension)
 
 # Copy the working dir to the same dir as original image
-cp $working_directory $original_directory
+Copy-Item -Path $working_directory -Destination $original_directory -Recurse
 
 # Define a command for image conversion and copy
 $command = "ffmpeg -i `"$output_path`" `"$final_path`" -loglevel error"
