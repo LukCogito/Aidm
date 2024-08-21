@@ -152,6 +152,15 @@ echo "Adjusting a color and a brightness of the image."
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
 
+# Define a path for conversion of the current state of our image with ffmpeg
+$final_path = [System.IO.Path]::Combine($original_directory, $filename + "_adjusted" + ".jpeg")
+
+# Define a command for image conversion and copy
+$command = "ffmpeg -i `"$output_path`" -q:v 0  `"$final_path`" -loglevel error"
+
+# Execute the command with Invoke-Expression
+Invoke-Expression $command
+
 #______________________________________________________________
 # Here starts the part of this script for removing a background
 
@@ -169,7 +178,7 @@ $output_path = [System.IO.Path]::Combine($directory, $filename + "_transparent" 
 $command = "backgroundremover.exe -i `"$img_edit_path`" -m `"u2net_human_seg`" -o `"$output_path`""
 
 # Echoing a message for the user.
-echo "Removing a background of the image."
+echo "Remove a background of the image."
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
@@ -183,17 +192,20 @@ $img_edit_path = $output_path
 # Define a new filename
 $filename = [System.IO.Path]::GetFileNameWithoutExtension($img_edit_path)
 
-# Define an output path
-$output_path = [System.IO.Path]::Combine($directory, $filename + "_background" + $extension)
+# Define an output path with blue background
+$output_path_blue = [System.IO.Path]::Combine($directory, $filename + "_blue-background" + $extension)
+
+# Define an output path with grey background
+$output_path_grey = [System.IO.Path]::Combine($directory, $filename + "_grey-background" + $extension)
 
 # Define a path to the script
 $script_path = Join-Path -Path $PSScriptRoot "\standard_procedure\add_background.py"
 
 # Define a command for adding a new background
-$command = "pythonw $script_path `"$img_edit_path`" `"$output_path`""
+$command = "pythonw $script_path `"$img_edit_path`" `"$output_path_blue`" `"$output_path_grey`""
 
 # Echoing a message for the user.
-echo "Adding a new background to the image."
+echo "Adding new backgrounds to the image."
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
@@ -204,8 +216,9 @@ Invoke-Expression $command
 # Set extension to jpg (because desired output is)
 $extension = ".jpg" 
 
-# Define the final path
-$final_path = [System.IO.Path]::Combine($original_directory, $filename + "_background" + $extension)
+# Define the final paths
+$final_path_blue = [System.IO.Path]::Combine($original_directory, $filename + "_blue-background" + $extension)
+$final_path_white = [System.IO.Path]::Combine($original_directory, $filename + "_grey-background" + $extension)
 
 # Echoing a message for the user.
 echo "Here you go! The process is now complete."
@@ -214,7 +227,13 @@ echo "Here you go! The process is now complete."
 Start-Sleep -Seconds 3
 
 # Define a command for image conversion and copy
-$command = "ffmpeg -i `"$output_path`" `"$final_path`" -loglevel error"
+$command = "ffmpeg -i `"$output_path`" -q:v 0  `"$final_path_blue`" -loglevel error"
+
+# Execute the command with Invoke-Expression
+Invoke-Expression $command
+
+# Define a command for image conversion and copy
+$command = "ffmpeg -i `"$output_path`" -q:v 0  `"$final_path_white`" -loglevel error"
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
