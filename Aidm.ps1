@@ -158,6 +158,9 @@ $final_path = [System.IO.Path]::Combine($original_directory, $filename + "_adjus
 # Define a command for image conversion and copy
 $command = "ffmpeg -i `"$output_path`" -q:v 0  `"$final_path`" -loglevel error"
 
+# Relax for three secs
+Start-Sleep -Seconds 3
+
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
 
@@ -178,7 +181,7 @@ $output_path = [System.IO.Path]::Combine($directory, $filename + "_transparent" 
 $command = "backgroundremover.exe -i `"$img_edit_path`" -m `"u2net_human_seg`" -o `"$output_path`""
 
 # Echoing a message for the user.
-echo "Remove a background of the image."
+echo "Removing a background of the image."
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
@@ -218,7 +221,7 @@ $extension = ".jpg"
 
 # Define the final paths
 $final_path_blue = [System.IO.Path]::Combine($original_directory, $filename + "_blue-background" + $extension)
-$final_path_white = [System.IO.Path]::Combine($original_directory, $filename + "_grey-background" + $extension)
+$final_path_grey = [System.IO.Path]::Combine($original_directory, $filename + "_grey-background" + $extension)
 
 # Echoing a message for the user.
 echo "Here you go! The process is now complete."
@@ -227,13 +230,7 @@ echo "Here you go! The process is now complete."
 Start-Sleep -Seconds 3
 
 # Define a command for image conversion and copy
-$command = "ffmpeg -i `"$output_path`" -q:v 0  `"$final_path_blue`" -loglevel error"
-
-# Execute the command with Invoke-Expression
-Invoke-Expression $command
-
-# Define a command for image conversion and copy
-$command = "ffmpeg -i `"$output_path`" -q:v 0  `"$final_path_white`" -loglevel error"
+$command = "ffmpeg -i `"$output_path_blue`" -q:v 0  `"$final_path_blue`" -loglevel error; ffmpeg -i `"$output_path_grey`" -q:v 0  `"$final_path_grey`" -loglevel error"
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
@@ -241,11 +238,14 @@ Invoke-Expression $command
 # Copy the working dir to the same dir as original image
 Copy-Item -Path $working_directory -Destination $original_directory -Recurse
 
+# Stop the splash screen
+Stop-Process -Name "splash"
+
+# Relax for one sec
+Start-Sleep -Seconds 3
+
 # Delete working dir
 # https://stackoverflow.com/questions/10443891/powershell-command-rm-rf
 rm $working_directory -r -fo
-
-# Stop the splash screen
-Stop-Process -Name "splash"
 
 exit 0
