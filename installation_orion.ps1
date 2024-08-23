@@ -76,6 +76,9 @@ Remove-Item $installer
 echo "Installing ffmpeg..."
 winget install --id=Gyan.FFmpeg  -e --disable-interactivity --scope=machine
 
+echo "Installing ImageMagick..."
+winget install --id=ImageMagick.ImageMagick -e --disable-interactivity --scope=machine
+
 # Add virtual Python
 $python_dir = "D:\Python\"
 mkdir $python_dir

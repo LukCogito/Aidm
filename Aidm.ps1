@@ -73,7 +73,7 @@ New-Item -Path $working_directory -ItemType Directory
 $img_edit_path = Join-Path -Path $working_directory -ChildPath "$file_name.png" 
 
 # Define a command for image conversion and copy
-$command = "ffmpeg -i `"$image_path`" `"$img_edit_path`" -loglevel error"
+$command = "magick.exe `"$image_path`" `"$img_edit_path`""
 
 # Execute the command with invoke expression
 Invoke-Expression $command
@@ -114,7 +114,7 @@ $output_wrong_format = Get-ChildItem -Path $working_directory -Recurse | Sort-Ob
 $output_wrong_format_path = $output_wrong_format.FullName
 
 # Define a command for image conversion and copy
-$command = "ffmpeg -i `"$output_wrong_format_path`" `"$output_path`" -loglevel error"
+$command = "magick.exe `"$output_wrong_format_path`" `"$output_path`""
 
 # Execute the command with invoke expression
 Invoke-Expression $command
@@ -152,11 +152,11 @@ echo "Adjusting a color and a brightness of the image."
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
 
-# Define a path for conversion of the current state of our image with ffmpeg
-$final_path = [System.IO.Path]::Combine($original_directory, $filename + "_adjusted" + ".jpeg")
+# Define a path for conversion of the current state of our image to jpg
+$final_path = [System.IO.Path]::Combine($original_directory, $filename + "_adjusted" + ".jpg")
 
 # Define a command for image conversion and copy
-$command = "ffmpeg -i `"$output_path`" -q:v 0  `"$final_path`" -loglevel error"
+$command = "magick.exe `"$output_path`" `"$final_path`""
 
 # Relax for three secs
 Start-Sleep -Seconds 3
@@ -230,7 +230,7 @@ echo "Here you go! The process is now complete."
 Start-Sleep -Seconds 3
 
 # Define a command for image conversion and copy
-$command = "ffmpeg -i `"$output_path_blue`" -q:v 0  `"$final_path_blue`" -loglevel error; ffmpeg -i `"$output_path_grey`" -q:v 0  `"$final_path_grey`" -loglevel error"
+$command = "magick.exe `"$output_path_blue`" `"$final_path_blue`"; magick.exe `"$output_path_grey`" `"$final_path_grey`""
 
 # Execute the command with Invoke-Expression
 Invoke-Expression $command
@@ -241,8 +241,8 @@ Copy-Item -Path $working_directory -Destination $original_directory -Recurse
 # Stop the splash screen
 Stop-Process -Name "splash"
 
-# Relax for one sec
-Start-Sleep -Seconds 3
+# Dispose the image from memory before deleting the working dir
+$image.Dispose()
 
 # Delete working dir
 # https://stackoverflow.com/questions/10443891/powershell-command-rm-rf
